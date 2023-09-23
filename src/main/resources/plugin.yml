@@ -1,0 +1,8 @@
+name: BForest
+version: '${project.version}'
+main: my.cufee.bforest.BForest
+api-version: '1.20'
+
+commands:
+  BFjoin:
+    description: Присоедениться к игре.
