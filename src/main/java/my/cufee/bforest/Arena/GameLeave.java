@@ -18,7 +18,7 @@ public class GameLeave implements CommandExecutor {
                     PlayersCount.count -= 1;
                     Arena.PlayerOnGame = false;
                     Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
-                            " вышел из игры (" + PlayersCount.count + "/5)");
+                            " вышел из игры (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не в игре!");

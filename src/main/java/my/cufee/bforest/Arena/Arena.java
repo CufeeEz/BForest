@@ -16,16 +16,21 @@ public class Arena implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player GamePlayer = (Player) commandSender;
             if (GameStatus){
-                if (!PlayerOnGame){
-                    PlayerOnGame = true;
-                    PlayersCount.count += 1;
-                    Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
-                            " подключился (" + PlayersCount.count + "/5)");
-                    GamePlayer.teleport(ArenaLocation.getLocLobby());
+                if (PlayersCount.count <= (int ) GameCreate.CreatePlayersCount){
+                    if (!PlayerOnGame){
+                        PlayerOnGame = true;
+                        PlayersCount.count += 1;
+                        Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
+                                " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
+                        GamePlayer.teleport(ArenaLocation.getLocLobby());
+                    }
+                    else {
+                        commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"
+                                + ChatColor.GRAY + "\nДля выхода из игры напишите /BFleave");
+                    }
                 }
                 else {
-                    commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"
-                            + ChatColor.GRAY + "\nДля выхода из игры напишите /BFleave");
+                    commandSender.sendMessage(ChatColor.RED + "В игре максимальное количество игроков");
                 }
             }
             else {
@@ -39,5 +44,6 @@ public class Arena implements CommandExecutor {
     }
     public static boolean GameStatus = false;
     public static boolean PlayerOnGame = false;
+
 }
 
