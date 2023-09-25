@@ -16,8 +16,7 @@ public class GameJoin implements CommandExecutor {
             Player GamePlayer = (Player) commandSender;
             if (GameStatus){
                 if (PlayersCount.count <= (int ) GameCreate.CreatePlayersCount){
-                    if (!PlayerOnGame){
-                        PlayerOnGame = true;
+                    if (!PlayersCount.playersOnGame.contains(GamePlayer.getName())){
                         PlayersCount.count += 1;
                         Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
                                 " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
@@ -44,7 +43,6 @@ public class GameJoin implements CommandExecutor {
         return false;
     }
     public static boolean GameStatus = false;
-    public static boolean PlayerOnGame = false;
 
 }
 

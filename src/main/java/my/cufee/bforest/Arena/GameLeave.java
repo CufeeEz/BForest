@@ -14,9 +14,8 @@ public class GameLeave implements CommandExecutor {
         if (commandSender instanceof Player) {
             Player GamePlayer = (Player) commandSender;
             if (GameJoin.GameStatus){
-                if (GameJoin.PlayerOnGame){
+                if (PlayersCount.playersOnGame.contains(GamePlayer.getName())){
                     PlayersCount.count -= 1;
-                    GameJoin.PlayerOnGame = false;
                     Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
                             " вышел из игры (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                     PlayersCount.playersOnGame.remove(GamePlayer.getName());
