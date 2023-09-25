@@ -3,13 +3,12 @@ package my.cufee.bforest.Arena;
 import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Arena implements CommandExecutor {
+public class GameJoin implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
@@ -23,6 +22,8 @@ public class Arena implements CommandExecutor {
                         Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
                                 " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                         GamePlayer.teleport(ArenaLocation.getLocLobby());
+                        PlayersCount.playersOnGame.add(GamePlayer.getName());
+
                     }
                     else {
                         commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"

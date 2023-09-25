@@ -15,12 +15,12 @@ public class GameCreate implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {
         if (commandSender instanceof Player) {
             Player GameCreator = (Player) commandSender;
-            if (!Arena.GameStatus){
+            if (!GameJoin.GameStatus){
                 if (GameCreator.isOp()) {
                     CreatePlayersCount = Integer.parseInt(args[0]);
                     Bukkit.broadcastMessage(ChatColor.GREEN + GameCreator.getName() + " создал игру!" +
                             ChatColor.YELLOW + "\nДля подключения напишите /BFjoin");
-                    Arena.GameStatus = true;
+                    GameJoin.GameStatus = true;
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не оператор!");

@@ -13,12 +13,14 @@ public class GameLeave implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player GamePlayer = (Player) commandSender;
-            if (Arena.GameStatus){
-                if (Arena.PlayerOnGame){
+            if (GameJoin.GameStatus){
+                if (GameJoin.PlayerOnGame){
                     PlayersCount.count -= 1;
-                    Arena.PlayerOnGame = false;
+                    GameJoin.PlayerOnGame = false;
                     Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
                             " вышел из игры (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
+                    PlayersCount.playersOnGame.remove(GamePlayer.getName());
+                    System.out.println(PlayersCount.playersOnGame);
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не в игре!");
@@ -32,10 +34,6 @@ public class GameLeave implements CommandExecutor {
         else {
             commandSender.sendMessage(ChatColor.RED + "Вы не игрок!");
         }
-
-
-
-
         return false;
     }
 }
