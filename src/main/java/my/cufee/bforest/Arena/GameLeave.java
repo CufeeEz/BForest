@@ -20,6 +20,7 @@ public class GameLeave implements CommandExecutor {
                             " вышел из игры (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                     PlayersCount.playersOnGame.remove(GamePlayer.getName());
                     System.out.println(PlayersCount.playersOnGame);
+                    GamePlayer.teleport(ArenaLocation.getLocSpawn());
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не в игре!");

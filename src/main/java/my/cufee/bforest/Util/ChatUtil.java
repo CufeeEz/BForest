@@ -28,4 +28,20 @@ public class ChatUtil {
             }
         }
     }
+    public static void GameRule(String murder, List<String> ListPlayersOnGame){
+        for(String Player : ListPlayersOnGame) {
+            Player PlayerSenderMassage = Bukkit.getPlayer(Player);
+            PlayerSenderMassage.sendMessage(ChatColor.GOLD + "Маньяком был выбран - " + murder);
+            GameJoin.TimeSleep(500);
+            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Делай все возможное что бы выжить до утра");
+            GameJoin.TimeSleep(200);
+            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Бегай, бей, прячься");
+            GameJoin.TimeSleep(200);
+            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Делай все возможное что бы выжить до утра");
+            GameJoin.TimeSleep(200);
+            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "И знай, у маньяка отличное зрение");
+            GameJoin.TimeSleep(200);
+            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Удачи");
+        }
+    }
 }

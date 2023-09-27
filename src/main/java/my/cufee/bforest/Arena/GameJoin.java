@@ -1,5 +1,6 @@
 package my.cufee.bforest.Arena;
 
+import my.cufee.bforest.Game.StartGame;
 import my.cufee.bforest.Util.ChatUtil;
 import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
@@ -26,6 +27,7 @@ public class GameJoin implements CommandExecutor {
                         if(PlayersCount.count == (int ) GameCreate.CreatePlayersCount)
                         {
                             ChatUtil.Сountdown(PlayersCount.playersOnGame);
+                            StartGame.beginGame(PlayersCount.playersOnGame);
                         }
                     }
                     else {
