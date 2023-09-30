@@ -1,8 +1,8 @@
 package my.cufee.bforest.Game;
 
 import my.cufee.bforest.Arena.ArenaLocation;
+
 import my.cufee.bforest.Util.ChatUtil;
-import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -15,16 +15,32 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.List;
 import java.util.Objects;
 
+import static my.cufee.bforest.Util.ChatUtil.dfsdfdf;
+import static my.cufee.bforest.Util.PlayersCount.playersOnGame;
+
 public class StartGame {
 
-    static String murderRole = GetRole.GetMurderRole(PlayersCount.playersOnGame);
-    public static void beginGame(List<String> ArrayPlayers){
-        ChatUtil.GameRule(murderRole, PlayersCount.playersOnGame);
-        for (int i = 0; i < ArrayPlayers.size(); i++) {
-            if (Objects.equals(murderRole, ArrayPlayers.get(i))) {
+    static String murderRole = GetRole.GetMurderRole(playersOnGame);
 
+    public static void beginGame(List<String> ArrayPlayers){
+        ChatUtil.GameRule(murderRole, playersOnGame);
+        for (int i = 0; i < ArrayPlayers.size(); i++) {
+            if (!Objects.equals(murderRole, ArrayPlayers.get(i))) {
+                Player SurvivorPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
+                SurvivorPlayer.teleport(ArenaLocation.getLocSpawnSurvivor());
+                // Отчистка игрока и подготовка его к игре
+                SurvivorPlayer.setHealth(20);
+                SurvivorPlayer.getInventory().clear();
+                SurvivorPlayer.setGameMode(GameMode.ADVENTURE);
+                SurvivorPlayer.setFoodLevel(20);
+                SurvivorPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 9999, 1));
+                ItemStack Stick = new ItemStack(Material.STICK);
+                Stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 3);
+                SurvivorPlayer.getInventory().addItem(Stick);
+            }
+            else{
                 Player MurderPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
-                MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
+                MurderPlayer.teleport(ArenaLocation.getLocPreSpawnMurder());
                 // Отчистка игрока и подготовка его к игре
                 MurderPlayer.setHealth(20);
                 MurderPlayer.getInventory().clear();
@@ -36,29 +52,10 @@ public class StartGame {
                 ItemStack Sword = new ItemStack(Material.STONE_SWORD);
                 Sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                 MurderPlayer.getInventory().addItem(Sword);
-            }
-            else{
-                Player SurvivorPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
-                SurvivorPlayer.teleport(ArenaLocation.getLocSpawnSurvivor());
-                // Отчистка игрока и подготовка его к игре
-                SurvivorPlayer.setHealth(20);
-                SurvivorPlayer.getInventory().clear();
-                SurvivorPlayer.setGameMode(GameMode.ADVENTURE);
-                SurvivorPlayer.setFoodLevel(20);
-
-                SurvivorPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 9999, 1));
-                ItemStack Stick = new ItemStack(Material.STICK);
-                Stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 3);
-                SurvivorPlayer.getInventory().addItem(Stick);
-
+                ChatUtil.СountdownStart(playersOnGame);
+                dfsdfdf();
+                MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
             }
         }
-
-
-
-
-
-
-
     }
 }

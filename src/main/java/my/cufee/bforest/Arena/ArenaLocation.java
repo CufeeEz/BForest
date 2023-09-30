@@ -1,6 +1,6 @@
 package my.cufee.bforest.Arena;
 
-import my.cufee.bforest.BForest;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -19,7 +19,12 @@ public class ArenaLocation {
     }
     public static Location getLocSpawnMurder() {
         World world = Bukkit.getWorld("world");
-        Location LocSpawnSurvivor = new Location(world, 0.5, -60.0, -219.5);
+        Location LocSpawnSurvivor = new Location(world, 0.5, -58.0, -219.5);
+        return LocSpawnSurvivor;
+    }
+    public static Location getLocPreSpawnMurder() {
+        World world = Bukkit.getWorld("world");
+        Location LocSpawnSurvivor = new Location(world, 0.5, -58.0, -353.5);
         return LocSpawnSurvivor;
     }
     public static Location getLocSpawn() {

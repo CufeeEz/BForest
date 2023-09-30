@@ -1,6 +1,7 @@
 my\cufee\bforest\Util\PlayersCount.class
 my\cufee\bforest\Arena\GameLeave.class
 my\cufee\bforest\Arena\GameJoin.class
+my\cufee\bforest\Util\ChatUtil$1.class
 my\cufee\bforest\Arena\ArenaLocation.class
 my\cufee\bforest\Util\ChatUtil.class
 my\cufee\bforest\BForest.class

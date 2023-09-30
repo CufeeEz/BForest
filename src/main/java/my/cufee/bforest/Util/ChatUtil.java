@@ -1,10 +1,12 @@
 package my.cufee.bforest.Util;
 
-import my.cufee.bforest.Arena.GameJoin;
+
+import my.cufee.bforest.BForest;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.util.List;
 
@@ -16,15 +18,15 @@ public class ChatUtil {
             Player PlayerSenderMassage = Bukkit.getPlayer(Player);
             if (PlayerSenderMassage != null) {
                 PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 5 секунд");
-                GameJoin.TimeSleep(1000);
+                dfsdfdf();
                 PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 4 секунды");
-                GameJoin.TimeSleep(1000);
+                dfsdfdf();
                 PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 3 секунды");
-                GameJoin.TimeSleep(1000);
+                dfsdfdf();
                 PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 2 секунды");
-                GameJoin.TimeSleep(1000);
+                dfsdfdf();
                 PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 1 секунду!");
-                GameJoin.TimeSleep(1000);
+                dfsdfdf();
             }
         }
     }
@@ -32,14 +34,38 @@ public class ChatUtil {
         for(String Player : ListPlayersOnGame) {
             Player PlayerSenderMassage = Bukkit.getPlayer(Player);
             PlayerSenderMassage.sendMessage(ChatColor.GOLD + "Маньяком был выбран - " + murder);
-            GameJoin.TimeSleep(500);
+            dfsdfdf();
             PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Делай все возможное что бы выжить до утра");
-            GameJoin.TimeSleep(500);
+            dfsdfdf();
             PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Бегай, бей, прячься");
-            GameJoin.TimeSleep(500);
+            dfsdfdf();
             PlayerSenderMassage.sendMessage(ChatColor.GREEN + "И помни, у маньяка отличное зрение");
-            GameJoin.TimeSleep(500);
+            dfsdfdf();
             PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Удачи");
         }
+    }
+    public static void СountdownStart(List<String> ListPlayersOnGame) {
+        for (String Player : ListPlayersOnGame) {
+            Player PlayerSenderMassage = Bukkit.getPlayer(Player);
+            dfsdfdf();
+            PlayerSenderMassage.sendMessage(ChatColor.AQUA + "У выживших есть 1 минута чтобы спрятаться");
+        }
+    }
+    public static void dfsdfdf(){
+        Bukkit.getScheduler().runTaskTimer(BForest.ChatUtil, new Runnable() {
+            int ticks = 20;
+
+            @Override
+            public void run() {
+                if (ticks <= 0) {
+                    // Код, который будет выполняться после заданной задержки
+                    //Bukkit.getScheduler().cancelTasks(plugin); // Отмена задания
+                    return;
+                }
+
+                // Ваш код, который будет выполняться каждый тик
+                ticks--;
+            }
+        }, 0, 1);
     }
 }

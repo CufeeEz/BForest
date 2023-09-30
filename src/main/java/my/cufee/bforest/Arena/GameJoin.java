@@ -1,5 +1,6 @@
 package my.cufee.bforest.Arena;
 
+import my.cufee.bforest.BForest;
 import my.cufee.bforest.Game.StartGame;
 import my.cufee.bforest.Util.ChatUtil;
 import my.cufee.bforest.Util.PlayersCount;
@@ -9,6 +10,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
+
 
 public class GameJoin implements CommandExecutor {
 
@@ -49,17 +52,5 @@ public class GameJoin implements CommandExecutor {
         return false;
     }
     public static boolean GameStatus = false;
-
-    public static void TimeSleep(int time){
-        try
-        {
-            Thread.sleep(time);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
-            // 1 секунда = 1000 миллисекунд
-
-        }
-    }
 }
 
