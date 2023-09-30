@@ -15,7 +15,8 @@ import org.bukkit.potion.PotionEffectType;
 import java.util.List;
 import java.util.Objects;
 
-import static my.cufee.bforest.Util.ChatUtil.dfsdfdf;
+
+import static my.cufee.bforest.Util.ChatUtil.startTimer;
 import static my.cufee.bforest.Util.PlayersCount.playersOnGame;
 
 public class StartGame {
@@ -53,7 +54,7 @@ public class StartGame {
                 Sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                 MurderPlayer.getInventory().addItem(Sword);
                 ChatUtil.СountdownStart(playersOnGame);
-                dfsdfdf();
+                //
                 MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
             }
         }

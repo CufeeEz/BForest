@@ -29,7 +29,7 @@ public class GameJoin implements CommandExecutor {
                         PlayersCount.playersOnGame.add(GamePlayer.getName());
                         if(PlayersCount.count == (int ) GameCreate.CreatePlayersCount)
                         {
-                            ChatUtil.Сountdown(PlayersCount.playersOnGame);
+                            ChatUtil.startTimer(PlayersCount.playersOnGame);
                             StartGame.beginGame(PlayersCount.playersOnGame);
                         }
                     }
