@@ -1,90 +1,82 @@
 package my.cufee.bforest.Util;
 
 
+import my.cufee.bforest.Arena.ArenaLocation;
 import my.cufee.bforest.BForest;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-import java.util.List;
+
 
 public class ChatUtil {
 
-    public static void Сountdown(List<String> ListPlayersOnGame){
-        for(String Player : ListPlayersOnGame){
-            Player PlayerSenderMassage = Bukkit.getPlayer(Player);
-            if (PlayerSenderMassage != null) {
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 5 секунд");
+    public static int TimeOut = 5;
+    public static int timer1 = 11;
+    public static int timerIdGameRule;
+    public static void GameRule(String murder) {
 
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 4 секунды");
-
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 3 секунды");
-
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 2 секунды");
-
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через 1 секунду!");
-
-            }
-        }
-    }
-    public static void GameRule(String murder, List<String> ListPlayersOnGame){
-        for(String Player : ListPlayersOnGame) {
-            Player PlayerSenderMassage = Bukkit.getPlayer(Player);
-            PlayerSenderMassage.sendMessage(ChatColor.GOLD + "Маньяком был выбран - " + murder);
-
-            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Делай все возможное что бы выжить до утра");
-
-            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Бегай, бей, прячься");
-
-            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "И помни, у маньяка отличное зрение");
-
-            PlayerSenderMassage.sendMessage(ChatColor.GREEN + "Удачи");
-        }
-    }
-    public static void СountdownStart(List<String> ListPlayersOnGame) {
-        for (String Player : ListPlayersOnGame) {
-            Player PlayerSenderMassage = Bukkit.getPlayer(Player);
-
-            PlayerSenderMassage.sendMessage(ChatColor.AQUA + "У выживших есть 1 минута чтобы спрятаться");
-        }
-    }
-
-    public static int timer1 = 5;
-    public static void startTimer(List<String> ListPlayersOnGame) {
-
-        Bukkit.getScheduler().runTaskTimer(BForest.ChatUtil, () -> {
+        timerIdGameRule = Bukkit.getScheduler().runTaskTimer(BForest.ChatUtil, () -> {
             if(timer1 == 0) {
-                Bukkit.getScheduler().cancelTasks(BForest.ChatUtil);
+                Bukkit.getScheduler().cancelTask(timerIdGameRule);
+                TimeOut(murder);
             }
-            else {
-                for(String Player : ListPlayersOnGame){
-                    Player PlayerSenderMassage = Bukkit.getPlayer(Player);
-                PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через " + timer1);
-                }
+            else if(timer1 == 6){
+               ChatBreadcastMassege.SendMassages(ChatColor.GOLD + "Маньяком был выбран - " + murder);
                 timer1--;
             }
-
-        }, 20, 20);
-
+            else if(timer1 == 5){
+                ChatBreadcastMassege.SendMassages(ChatColor.GREEN + "Делай все возможное что бы выжить до утра");
+                timer1--;
+            }
+            else if(timer1 == 4){
+                ChatBreadcastMassege.SendMassages(ChatColor.GREEN + "Бегай, бей, прячься");
+                timer1--;
+            }
+            else if(timer1 == 3){
+                ChatBreadcastMassege.SendMassages(ChatColor.GREEN + "И помни, у маньяка отличное зрение");
+                timer1--;
+            }
+            else if(timer1 == 2) {
+                ChatBreadcastMassege.SendMassages(ChatColor.GREEN + "Удачи");
+                timer1--;
+            }
+            else if(timer1 == 1) {
+                ChatBreadcastMassege.SendMassages(ChatColor.AQUA + "У выживших есть 1 минута чтобы спрятаться");
+                timer1--;
+            }
+            else{
+                ChatBreadcastMassege.SendMassages(ChatColor.DARK_GREEN + "До начала игры осталось " + TimeOut);
+                TimeOut--;
+                timer1--;
+            }
+        }, 20, 20).getTaskId();
     }
-    public static int timer2 = 5;
-    public void startTimerForRules(List<String> ListPlayersOnGame) {
 
-        Bukkit.getScheduler().runTaskTimer(BForest.ChatUtil, () -> {
+
+
+    public static int timer2 = 60;
+    public static int timerTimeOut;
+    public static void TimeOut(String murder) {
+        timerTimeOut = Bukkit.getScheduler().runTaskTimer(BForest.ChatUtil, () -> {
             if(timer2 == 0) {
-                Bukkit.getScheduler().cancelTasks(BForest.ChatUtil);
+                Bukkit.getScheduler().cancelTask(timerTimeOut);
+                ChatBreadcastMassege.SendMassages(ChatColor.AQUA + murder + " идет убивать!");
+                Player MurderPlayer = Bukkit.getPlayerExact(murder);
+                MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
+            }
+            else if(timer2 == 30){
+                ChatBreadcastMassege.SendMassages(ChatColor.DARK_RED + "У выживших осталось 30 секунд чтобы спрятаться");
+                timer2--;
+            }
+            else if(timer2 == 10){
+                ChatBreadcastMassege.SendMassages(ChatColor.DARK_RED + "У выживших осталось 10 секунд чтобы спрятаться");
+                timer2--;
             }
             else {
-                for(String Player : ListPlayersOnGame){
-                    Player PlayerSenderMassage = Bukkit.getPlayer(Player);
-                    PlayerSenderMassage.sendMessage(ChatColor.DARK_GREEN + "Игра начнется через ");
-                }
-                //timer2--;
+                timer2--;
             }
-
-        }, 20, 20);
-
+        }, 20, 20).getTaskId();
     }
 }

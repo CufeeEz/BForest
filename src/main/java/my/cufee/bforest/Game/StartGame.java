@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-import static my.cufee.bforest.Util.ChatUtil.startTimer;
+
 import static my.cufee.bforest.Util.PlayersCount.playersOnGame;
 
 public class StartGame {
@@ -24,7 +24,7 @@ public class StartGame {
     static String murderRole = GetRole.GetMurderRole(playersOnGame);
 
     public static void beginGame(List<String> ArrayPlayers){
-        ChatUtil.GameRule(murderRole, playersOnGame);
+        ChatUtil.GameRule(murderRole);
         for (int i = 0; i < ArrayPlayers.size(); i++) {
             if (!Objects.equals(murderRole, ArrayPlayers.get(i))) {
                 Player SurvivorPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
@@ -53,9 +53,8 @@ public class StartGame {
                 ItemStack Sword = new ItemStack(Material.STONE_SWORD);
                 Sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                 MurderPlayer.getInventory().addItem(Sword);
-                ChatUtil.СountdownStart(playersOnGame);
+
                 //
-                MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
             }
         }
     }
