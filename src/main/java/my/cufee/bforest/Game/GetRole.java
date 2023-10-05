@@ -1,14 +1,16 @@
 package my.cufee.bforest.Game;
 
-import java.util.List;
+import org.bukkit.entity.Player;
+
+
 import java.util.Random;
 
 public class GetRole {
 
-    static Random random = new Random();
-    static String GetMurderRole(List<String> ArrayPlayers) {
-        int randomIndex = random.nextInt(ArrayPlayers.size());
-        String ManiacRole = ArrayPlayers.get(randomIndex);
-        return ManiacRole;
+
+    public static Player getMurderRole(Player[] playersArray) {
+        Random random = new Random();
+        int randomIndex = random.nextInt(playersArray.length);
+        return playersArray[randomIndex];
     }
 }

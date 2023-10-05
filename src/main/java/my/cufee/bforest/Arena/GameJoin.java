@@ -10,33 +10,43 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
+
 
 
 public class GameJoin implements CommandExecutor {
-
+    boolean playerExists = false;
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player GamePlayer = (Player) commandSender;
             if (GameStatus){
                 if (PlayersCount.count <= (int ) GameCreate.CreatePlayersCount){
-                    if (!PlayersCount.playersOnGame.contains(GamePlayer.getName())){
-                        PlayersCount.count += 1;
-                        Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
-                                " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
-                        GamePlayer.teleport(ArenaLocation.getLocLobby());
-                        PlayersCount.playersOnGame.add(GamePlayer.getName());
-                        if(PlayersCount.count == (int ) GameCreate.CreatePlayersCount)
-                        {
-                            //ChatUtil.startTimer();
-                            StartGame.beginGame(PlayersCount.playersOnGame);
+
+                        if (GamePlayer.equals(GamePlayer)) {
+                            playerExists = true;
+                            if (playerExists){
+
+                                PlayersCount.addPlayer(GamePlayer, PlayersCount.count);
+                                PlayersCount.count += 1;
+                                Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
+                                        " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
+                                GamePlayer.teleport(ArenaLocation.getLocLobby());
+
+                                if(PlayersCount.count == (int ) GameCreate.CreatePlayersCount)
+                                {
+                                    //ChatUtil.startTimer();
+                                    StartGame.beginGame(PlayersCount.playersOnGame);
+                                }
+                            }
+                            else {
+                                commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"
+                                        + ChatColor.GRAY + "\nДля выхода из игры напишите /BFleave");
+                            }
                         }
-                    }
-                    else {
-                        commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"
-                                + ChatColor.GRAY + "\nДля выхода из игры напишите /BFleave");
-                    }
+                        else {
+                            commandSender.sendMessage(ChatColor.RED + "В игре максимальное количество игроков");
+                        }
+
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "В игре максимальное количество игроков");

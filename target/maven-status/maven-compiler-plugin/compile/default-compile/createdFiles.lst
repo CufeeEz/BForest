@@ -6,4 +6,5 @@ my\cufee\bforest\Util\ChatUtil.class
 my\cufee\bforest\BForest.class
 my\cufee\bforest\Game\GetRole.class
 my\cufee\bforest\Game\StartGame.class
+my\cufee\bforest\Util\ChatBroadcastMessege.class
 my\cufee\bforest\Arena\GameCreate.class

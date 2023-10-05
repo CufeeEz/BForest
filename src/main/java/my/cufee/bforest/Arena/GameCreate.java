@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class GameCreate implements CommandExecutor {
-    public static Object CreatePlayersCount;
+    public static int CreatePlayersCount;
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] args) {

@@ -3,6 +3,7 @@ package my.cufee.bforest.Game;
 import my.cufee.bforest.Arena.ArenaLocation;
 
 import my.cufee.bforest.Util.ChatUtil;
+import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -17,17 +18,18 @@ import java.util.Objects;
 
 
 
-import static my.cufee.bforest.Util.PlayersCount.playersOnGame;
 
 public class StartGame {
 
-    static String murderRole = GetRole.GetMurderRole(playersOnGame);
 
-    public static void beginGame(List<String> ArrayPlayers){
-        ChatUtil.GameRule(murderRole);
-        for (int i = 0; i < ArrayPlayers.size(); i++) {
-            if (!Objects.equals(murderRole, ArrayPlayers.get(i))) {
-                Player SurvivorPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
+    public static Player murderRole = GetRole.getMurderRole(PlayersCount.playersOnGame);
+
+    public static void beginGame(Player[] ArrayPlayers){
+        ChatUtil.GameRule(murderRole.getName());
+        for (int i = 0; i < ArrayPlayers.length; i++) {
+            if (!Objects.equals(murderRole, ArrayPlayers[i])) {
+
+                Player SurvivorPlayer = ArrayPlayers[i];
                 SurvivorPlayer.teleport(ArenaLocation.getLocSpawnSurvivor());
                 // Отчистка игрока и подготовка его к игре
                 SurvivorPlayer.setHealth(20);
@@ -40,7 +42,7 @@ public class StartGame {
                 SurvivorPlayer.getInventory().addItem(Stick);
             }
             else{
-                Player MurderPlayer = Bukkit.getPlayerExact(ArrayPlayers.get(i));
+                Player MurderPlayer = ArrayPlayers[i];
                 MurderPlayer.teleport(ArenaLocation.getLocPreSpawnMurder());
                 // Отчистка игрока и подготовка его к игре
                 MurderPlayer.setHealth(20);
