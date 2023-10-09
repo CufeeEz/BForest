@@ -1,6 +1,7 @@
 package my.cufee.bforest.Arena;
 
 import my.cufee.bforest.BForest;
+import my.cufee.bforest.Game.GetRole;
 import my.cufee.bforest.Game.StartGame;
 import my.cufee.bforest.Util.ChatUtil;
 import my.cufee.bforest.Util.PlayersCount;
@@ -11,6 +12,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 
 
 public class GameJoin implements CommandExecutor {
@@ -21,32 +23,22 @@ public class GameJoin implements CommandExecutor {
             Player GamePlayer = (Player) commandSender;
             if (GameStatus){
                 if (PlayersCount.count <= (int ) GameCreate.CreatePlayersCount){
+                    if (!Arrays.asList(PlayersCount.playersOnGame).contains(GamePlayer)) {
+                        PlayersCount.addPlayer(GamePlayer, PlayersCount.count);
+                        PlayersCount.count += 1;
+                        Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
+                                " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
+                        GamePlayer.teleport(ArenaLocation.getLocLobby());
+                        if (PlayersCount.count == (int) GameCreate.CreatePlayersCount) {
+                            ChatUtil.GameRule(StartGame.getMurderRole());
+                            //StartGame.beginGame(PlayersCount.playersOnGame);
 
-                        if (GamePlayer.equals(GamePlayer)) {
-                            playerExists = true;
-                            if (playerExists){
-
-                                PlayersCount.addPlayer(GamePlayer, PlayersCount.count);
-                                PlayersCount.count += 1;
-                                Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
-                                        " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
-                                GamePlayer.teleport(ArenaLocation.getLocLobby());
-
-                                if(PlayersCount.count == (int ) GameCreate.CreatePlayersCount)
-                                {
-                                    //ChatUtil.startTimer();
-                                    StartGame.beginGame(PlayersCount.playersOnGame);
-                                }
-                            }
-                            else {
-                                commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!"
-                                        + ChatColor.GRAY + "\nДля выхода из игры напишите /BFleave");
-                            }
                         }
-                        else {
-                            commandSender.sendMessage(ChatColor.RED + "В игре максимальное количество игроков");
-                        }
-
+                    }
+                    else {
+                        commandSender.sendMessage(ChatColor.RED + "Вы уже в игре!" + ChatColor.GRAY +
+                                "\nДля выхода из игры напишите /BFleave");
+                    }
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "В игре максимальное количество игроков");

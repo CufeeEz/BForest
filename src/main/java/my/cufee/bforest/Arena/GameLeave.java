@@ -8,19 +8,20 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class GameLeave implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
             Player gamePlayer = (Player) commandSender;
             if (GameJoin.GameStatus){
-                if (PlayersCount.playersOnGame.equals(gamePlayer.getName())){
+                if (Arrays.asList(PlayersCount.playersOnGame).contains(gamePlayer)){
                     PlayersCount.count -= 1;
                     Bukkit.broadcastMessage(ChatColor.GRAY + gamePlayer.getName() + ChatColor.GREEN +
                             " вышел из игры (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                     for (int i = 0; i < PlayersCount.playersOnGame.length; i++) {
                         if (PlayersCount.playersOnGame[i].equals(gamePlayer)) {
-                            // Найден игрок, который нужно удалить
                             PlayersCount.playersOnGame[i] = null;
                             break;
                         }

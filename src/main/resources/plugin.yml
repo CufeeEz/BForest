@@ -10,3 +10,5 @@ commands:
     description: Создать игру (op only).
   BFleave:
     description: Покинуть игру.
+  BFdelete:
+    description: Удалить игру игру.

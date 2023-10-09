@@ -1,10 +1,13 @@
+my\cufee\bforest\Event\SendingInSpectator.class
+my\cufee\bforest\Arena\GameDelete.class
+my\cufee\bforest\BForest.class
+my\cufee\bforest\Event\event.class
+my\cufee\bforest\Arena\GameCreate.class
 my\cufee\bforest\Util\PlayersCount.class
 my\cufee\bforest\Arena\GameLeave.class
 my\cufee\bforest\Arena\GameJoin.class
 my\cufee\bforest\Arena\ArenaLocation.class
 my\cufee\bforest\Util\ChatUtil.class
-my\cufee\bforest\BForest.class
 my\cufee\bforest\Game\GetRole.class
 my\cufee\bforest\Game\StartGame.class
 my\cufee\bforest\Util\ChatBroadcastMessege.class
-my\cufee\bforest\Arena\GameCreate.class

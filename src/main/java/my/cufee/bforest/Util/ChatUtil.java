@@ -16,16 +16,17 @@ public class ChatUtil {
     public static int TimeOut = 5;
     public static int timer1 = 11;
     public static int timerIdGameRule;
-    public static void GameRule(String murder) {
+    public static void GameRule(Player murder) {
 
         timerIdGameRule = Bukkit.getScheduler().runTaskTimer(BForest.getInstance(), () -> {
             if(timer1 == 0) {
-                StartGame.beginGame(PlayersCount.playersOnGame);
-                TimeOut(murder);
+                timer1--;
+                TimeOut();
                 Bukkit.getScheduler().cancelTask(timerIdGameRule);
             }
             else if(timer1 == 6){
-                ChatBroadcastMessege.SendMessages(ChatColor.GOLD + "Маньяком был выбран - " + murder);
+                ChatBroadcastMessege.SendMessages(ChatColor.GOLD + "Маньяком был выбран - " + murder.getName());
+                StartGame.beginGame(PlayersCount.playersOnGame);
                 timer1--;
             }
             else if(timer1 == 5){
@@ -48,7 +49,7 @@ public class ChatUtil {
                 ChatBroadcastMessege.SendMessages(ChatColor.AQUA + "У выживших есть 1 минута чтобы спрятаться");
                 timer1--;
             }
-            else{
+            else if(timer1 >= 7 & timer1 <= 11){
                 ChatBroadcastMessege.SendMessages(ChatColor.DARK_GREEN + "До начала игры осталось " + TimeOut);
                 TimeOut--;
                 timer1--;
@@ -57,16 +58,16 @@ public class ChatUtil {
     }
 
 
-
+    static Player murder = StartGame.murderRole;
     public static int timer2 = 60;
     public static int timerTimeOut;
-    public static void TimeOut(String murder) {
+    public static void TimeOut() {
         timerTimeOut = Bukkit.getScheduler().runTaskTimer(BForest.getInstance(), () -> {
             if(timer2 == 0) {
+
+                ChatBroadcastMessege.SendMessages(ChatColor.AQUA + murder.getName() + " идет убивать!");
+                murder.teleport(ArenaLocation.getLocSpawnMurder());
                 Bukkit.getScheduler().cancelTask(timerTimeOut);
-                ChatBroadcastMessege.SendMessages(ChatColor.AQUA + murder + " идет убивать!");
-                Player MurderPlayer = Bukkit.getPlayerExact(murder);
-                MurderPlayer.teleport(ArenaLocation.getLocSpawnMurder());
             }
             else if(timer2 == 30){
                 ChatBroadcastMessege.SendMessages(ChatColor.DARK_RED + "У выживших осталось 30 секунд чтобы спрятаться");
