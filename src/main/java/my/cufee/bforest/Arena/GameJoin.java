@@ -27,8 +27,9 @@ public class GameJoin implements CommandExecutor {
                         PlayersCount.count += 1;
                         Bukkit.broadcastMessage(ChatColor.GRAY + GamePlayer.getName() + ChatColor.GREEN +
                                 " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
-                        GamePlayer.teleport(ArenaLocation.getLocLobby());
+                        GamePlayer.teleport(ArenaLocation.getLocHubGame());
                         if (PlayersCount.count == (int) GameCreate.CreatePlayersCount) {
+                            StartGame.setMurderRole();
                             ChatUtil.GameRule(StartGame.murderRole);
                         }
                     }

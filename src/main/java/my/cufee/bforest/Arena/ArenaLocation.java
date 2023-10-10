@@ -9,7 +9,7 @@ public class ArenaLocation {
     World world = Bukkit.getWorld("world");
     public static Location getLocLobby() {
         World world = Bukkit.getWorld("world");
-        Location LobbyLoc = new Location(world, 0.5, -60.0, -35.5);
+        Location LobbyLoc = new Location(world, 0.5, -60.0, 0.5);
         return LobbyLoc;
     }
     public static Location getLocSpawnSurvivor() {
@@ -27,7 +27,7 @@ public class ArenaLocation {
         Location LocSpawnSurvivor = new Location(world, 0.5, -58.0, -353.5);
         return LocSpawnSurvivor;
     }
-    public static Location getLocSpawn() {
+    public static Location getLocHubGame() {
         World world = Bukkit.getWorld("world");
         Location SpawnLoc = new Location(world, 0.5, -60.0, -35.5);
         return SpawnLoc;

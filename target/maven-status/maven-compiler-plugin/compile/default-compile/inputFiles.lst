@@ -1,9 +1,14 @@
-C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameCreate.java
-C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameLeave.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Event\ProcessGame.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Util\ChatBroadcastMessege.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Game\StartGame.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameDelete.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Game\GetRole.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Util\PlayersCount.java
-C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\ArenaLocation.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\BForest.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameCreate.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\EndGame.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameLeave.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Event\SendingInSpectator.java
+C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\ArenaLocation.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Util\ChatUtil.java
 C:\Users\SystemX\IdeaProjects\BForest\src\main\java\my\cufee\bforest\Arena\GameJoin.java

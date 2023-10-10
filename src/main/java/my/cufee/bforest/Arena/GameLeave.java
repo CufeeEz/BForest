@@ -23,11 +23,9 @@ public class GameLeave implements CommandExecutor {
                     for (int i = 0; i < PlayersCount.playersOnGame.length; i++) {
                         if (PlayersCount.playersOnGame[i].equals(gamePlayer)) {
                             PlayersCount.playersOnGame[i] = null;
-                            break;
                         }
                     }
-                    System.out.println(Arrays.toString(PlayersCount.playersOnGame));
-                    gamePlayer.teleport(ArenaLocation.getLocSpawn());
+                    gamePlayer.teleport(ArenaLocation.getLocHubGame());
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не в игре!");

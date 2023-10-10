@@ -22,7 +22,6 @@ public final class BForest extends JavaPlugin {
         getCommand("BFdelete").setExecutor(new GameDelete());
         getServer().getPluginManager().registerEvents(new SendingInSpectator(), this);
         getServer().getPluginManager().registerEvents(new ProcessGame(), this);
-
     }
     public static BForest getInstance() {
         return instance;
