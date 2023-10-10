@@ -23,11 +23,11 @@ public class EndGame {
             player.setGameMode(GameMode.ADVENTURE);
             for (PotionEffect pt : player.getActivePotionEffects()) {
                 player.removePotionEffect(pt.getType());
-                player.getInventory().clear();
-                player.setHealth(20);
-                player.teleport(ArenaLocation.getLocLobby());
-                player.setFoodLevel(20);
             }
+            player.getInventory().clear();
+            player.setHealth(20);
+            player.teleport(ArenaLocation.getLocLobby());
+            player.setFoodLevel(20);
         }
         Arrays.fill(PlayersCount.playersOnGame, null);
         Bukkit.broadcastMessage("Игра окончена");

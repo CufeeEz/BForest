@@ -10,8 +10,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
-
-
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 
 public class ChatUtil {
@@ -77,44 +77,61 @@ public class ChatUtil {
             timer2--;
         }, 0, 20).getTaskId();
     }
-    public static int timerGame = 600;
+    public static int timerGame;
     public static int timerIdGameProcess;
     public static void processGame() {
         timerGame = 540;
         timerIdGameProcess = Bukkit.getScheduler().runTaskTimer(BForest.getInstance(), () -> {
             switch (timerGame) {
                 case (480):
+                    StartGame.giveFirework();
                     ChatBroadcastMessege.SendMessages("Осталось 8 минут до рассвета!");
                     break;
                 case (360):
+                    StartGame.giveFirework();
                     ChatBroadcastMessege.SendMessages("Осталось 6 минут до рассвета!");
                     break;
                 case (240):
+                    StartGame.giveFirework();
                     ChatBroadcastMessege.SendMessages("Осталось 4 минут до рассвета!");
                     break;
                 case (180):
-                    ChatBroadcastMessege.SendMessages("Осталось 3 минут до рассвета!");
+                    StartGame.giveFirework();
+                    StartGame.murderRole.removePotionEffect(PotionEffectType.GLOWING);
+                    ChatBroadcastMessege.SendMessages("Осталось 3 минут до рассвета!\n"
+                            + ChatColor.RED + "Убийцу больше не видно");
                     break;
                 case (120):
-                    ChatBroadcastMessege.SendMessages("Осталось 2 минут до рассвета!");
+                    StartGame.giveFirework();
+                    StartGame.correctEffect();
+                    ChatBroadcastMessege.SendMessages("Осталось 2 минут до рассвета!\n"
+                            + ChatColor.RED + "Мирные получают негативные эффекты");
                     break;
                 case (60):
+                    StartGame.giveFirework();
+
                     ChatBroadcastMessege.SendMessages("Осталось 1 минут до рассвета!");
                     break;
                 case (30):
+                    StartGame.giveFirework();
+
                     ChatBroadcastMessege.SendMessages("Осталось 30 секунд до рассвета!");
                     break;
                 case (10):
-                    ChatBroadcastMessege.SendMessages("Осталось 10 секунд до рассвета!");
+                    StartGame.giveFirework();
+                    ChatBroadcastMessege.SendMessages(ChatColor.DARK_GREEN + "Осталось 10 секунд до рассвета!");
                     break;
                 case (3):
-                    ChatBroadcastMessege.SendMessages("Осталось 3 секунды до рассвета!");
+                    StartGame.giveFirework();
+                    ChatBroadcastMessege.SendMessages(ChatColor.GREEN + "Осталось 3 секунды до рассвета!");
                     break;
                 case (2):
-                    ChatBroadcastMessege.SendMessages("Осталось 2 секунды до рассвета!");
+                    StartGame.giveFirework();
+                    ChatBroadcastMessege.SendMessages(ChatColor.YELLOW + "Осталось 2 секунды до рассвета!");
                     break;
                 case (1):
-                    ChatBroadcastMessege.SendMessages("Осталось 1 секунда до рассвета!");
+                    StartGame.giveFirework();
+                    ChatBroadcastMessege.SendMessages(ChatColor.RED + "Осталось 1 секунда до рассвета!");
                     break;
                 case (0):
                     ChatBroadcastMessege.SendMessages(ChatColor.GREEN + "Мирные победили!");
@@ -122,7 +139,6 @@ public class ChatUtil {
                     Bukkit.getScheduler().cancelTask(timerIdGameProcess);
                     break;
             }
-            Bukkit.broadcastMessage(String.valueOf(timerGame));
             timerGame--;
         }, 0, 20).getTaskId();
     }

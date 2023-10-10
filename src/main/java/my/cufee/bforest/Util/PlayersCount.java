@@ -11,7 +11,5 @@ public class PlayersCount {
     }
 
     public static Player[] playersOnGame = new Player[GameCreate.CreatePlayersCount];
-
-
 }
 
