@@ -26,7 +26,7 @@ public class GameLeave implements CommandExecutor {
                             break;
                         }
                     }
-                    System.out.println(PlayersCount.playersOnGame);
+                    System.out.println(Arrays.toString(PlayersCount.playersOnGame));
                     gamePlayer.teleport(ArenaLocation.getLocSpawn());
                 }
                 else {

@@ -1,7 +1,8 @@
+my\cufee\bforest\Event\ProcessGame.class
 my\cufee\bforest\Event\SendingInSpectator.class
 my\cufee\bforest\Arena\GameDelete.class
+my\cufee\bforest\Arena\EndGame.class
 my\cufee\bforest\BForest.class
-my\cufee\bforest\Event\event.class
 my\cufee\bforest\Arena\GameCreate.class
 my\cufee\bforest\Util\PlayersCount.class
 my\cufee\bforest\Arena\GameLeave.class

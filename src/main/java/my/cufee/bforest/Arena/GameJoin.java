@@ -16,7 +16,6 @@ import java.util.Arrays;
 
 
 public class GameJoin implements CommandExecutor {
-    boolean playerExists = false;
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player) {
@@ -30,9 +29,7 @@ public class GameJoin implements CommandExecutor {
                                 " подключился (" + PlayersCount.count + "/" + GameCreate.CreatePlayersCount + ")");
                         GamePlayer.teleport(ArenaLocation.getLocLobby());
                         if (PlayersCount.count == (int) GameCreate.CreatePlayersCount) {
-                            ChatUtil.GameRule(StartGame.getMurderRole());
-                            //StartGame.beginGame(PlayersCount.playersOnGame);
-
+                            ChatUtil.GameRule(StartGame.murderRole);
                         }
                     }
                     else {

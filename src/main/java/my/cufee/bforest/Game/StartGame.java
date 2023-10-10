@@ -22,10 +22,6 @@ public class StartGame {
 
 
     public static Player murderRole = GetRole.getMurderRole(PlayersCount.playersOnGame);
-    public static Player getMurderRole(){
-        return murderRole;
-    }
-
     public static void beginGame(Player[] ArrayPlayers){
         ChatUtil.GameRule(murderRole);
         for (int i = 0; i < ArrayPlayers.length; i++) {
@@ -54,8 +50,6 @@ public class StartGame {
                 ItemStack Sword = new ItemStack(Material.STONE_SWORD);
                 Sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                 murderPlayer.getInventory().addItem(Sword);
-
-                //
             }
         }
     }

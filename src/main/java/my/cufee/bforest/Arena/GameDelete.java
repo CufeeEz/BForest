@@ -1,5 +1,6 @@
 package my.cufee.bforest.Arena;
 
+import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -17,7 +18,7 @@ public class GameDelete implements CommandExecutor {
                 {
                     Bukkit.broadcastMessage(ChatColor.GREEN + deletingPlayer.getName() + " удалил игру!" +
                             ChatColor.YELLOW + "\nДля создания игры напишите /BFcreate");
-                    GameJoin.GameStatus = false;
+                    EndGame.deleteGame(PlayersCount.playersOnGame);
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не оператор!");
@@ -31,8 +32,6 @@ public class GameDelete implements CommandExecutor {
         else {
             commandSender.sendMessage(ChatColor.RED + "Вы не игрок!");
         }
-
-
         return false;
     }
 }

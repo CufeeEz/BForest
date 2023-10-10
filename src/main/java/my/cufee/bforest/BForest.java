@@ -4,9 +4,8 @@ import my.cufee.bforest.Arena.GameDelete;
 import my.cufee.bforest.Arena.GameJoin;
 import my.cufee.bforest.Arena.GameCreate;
 import my.cufee.bforest.Arena.GameLeave;
+import my.cufee.bforest.Event.ProcessGame;
 import my.cufee.bforest.Event.SendingInSpectator;
-import my.cufee.bforest.Event.event;
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BForest extends JavaPlugin {
@@ -22,6 +21,7 @@ public final class BForest extends JavaPlugin {
         getCommand("BFleave").setExecutor(new GameLeave());
         getCommand("BFdelete").setExecutor(new GameDelete());
         getServer().getPluginManager().registerEvents(new SendingInSpectator(), this);
+        getServer().getPluginManager().registerEvents(new ProcessGame(), this);
 
     }
     public static BForest getInstance() {
