@@ -33,7 +33,7 @@ public class StartGame {
                 arrayPlayer.getInventory().clear();
                 arrayPlayer.setGameMode(GameMode.ADVENTURE);
                 arrayPlayer.setFoodLevel(20);
-                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 600, 1));
+                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 12000, 1));
                 ItemStack Stick = new ItemStack(Material.STICK);
                 Stick.addUnsafeEnchantment(Enchantment.KNOCKBACK, 3);
                 arrayPlayer.getInventory().addItem(Stick);
@@ -43,9 +43,9 @@ public class StartGame {
                 arrayPlayer.getInventory().clear();
                 arrayPlayer.setGameMode(GameMode.ADVENTURE);
                 arrayPlayer.setFoodLevel(20);
-                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 600, 1));
-                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 600, 1));
-                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 600, 2));
+                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 12000, 1));
+                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 12000, 1));
+                arrayPlayer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 12000, 2));
                 ItemStack Sword = new ItemStack(Material.STONE_SWORD);
                 Sword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
                 arrayPlayer.getInventory().addItem(Sword);
@@ -55,7 +55,7 @@ public class StartGame {
     public static void giveFirework(){
         Player[] playersArray = PlayersCount.playersOnGame;
         for (Player p : playersArray) {
-            if(!murderRole.equals(PlayersCount.playersOnGame)) {
+            if(!p.equals(murderRole)) {
                 Firework firework = (Firework) p.getWorld().spawnEntity(p.getLocation(), EntityType.FIREWORK);
                 FireworkMeta fireworkMeta = firework.getFireworkMeta();
                 fireworkMeta.addEffect(FireworkEffect.builder().withColor(Color.RED).flicker(true).build());
@@ -74,4 +74,13 @@ public class StartGame {
             }
         }
     }
+    public static void disableHunger() {
+        Player[] playersArray = PlayersCount.playersOnGame;
+        for (Player p : playersArray) {
+            p.setFoodLevel(20);
+            p.setSaturation(20);
+            p.setExhaustion(0);
+        }
+    }
 }
+

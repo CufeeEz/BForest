@@ -31,6 +31,7 @@ public class GameJoin implements CommandExecutor {
                         if (PlayersCount.count == (int) GameCreate.CreatePlayersCount) {
                             StartGame.setMurderRole();
                             ChatUtil.GameRule(StartGame.murderRole);
+                            StartGame.disableHunger();
                         }
                     }
                     else {
