@@ -1,6 +1,7 @@
 package my.cufee.bforest.Arena;
 
 
+import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -21,6 +22,7 @@ public class GameCreate implements CommandExecutor {
                     Bukkit.broadcastMessage(ChatColor.GREEN + gameCreator.getName() + " создал игру!" +
                             ChatColor.YELLOW + "\nДля подключения напишите /BFjoin");
                     GameJoin.GameStatus = true;
+                    PlayersCount.createArrayPlayersOnGame(CreatePlayersCount);
                 }
                 else {
                     commandSender.sendMessage(ChatColor.RED + "Вы не оператор!");

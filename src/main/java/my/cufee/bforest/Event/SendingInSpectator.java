@@ -1,6 +1,8 @@
 package my.cufee.bforest.Event;
 
+import my.cufee.bforest.Arena.EndGame;
 import my.cufee.bforest.Arena.GameCreate;
+import my.cufee.bforest.Game.StartGame;
 import my.cufee.bforest.Util.ChatBroadcastMessege;
 import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.GameMode;
@@ -16,9 +18,16 @@ public class SendingInSpectator implements Listener {
         Player player = event.getEntity();
         if (isPlayerInArray(player)) {
             playerDeathCount++;
-            player.setGameMode(GameMode.SPECTATOR);
-            if (playerDeathCount == GameCreate.CreatePlayersCount) {
-                ChatBroadcastMessege.SendMessages("Победил убийца!");
+            if(player.equals(StartGame.murderRole)) {
+                ChatBroadcastMessege.SendMessages("Победили мирные!");
+                EndGame.deleteGame(PlayersCount.playersOnGame);
+            }
+            else {
+                player.setGameMode(GameMode.SPECTATOR);
+                if(playerDeathCount == GameCreate.CreatePlayersCount) {
+                    ChatBroadcastMessege.SendMessages("Победил убийца!");
+                    EndGame.deleteGame(PlayersCount.playersOnGame);
+                }
             }
         }
     }
