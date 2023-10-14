@@ -67,7 +67,7 @@ public class StartGame {
     public static void correctEffect(){
         Player[] playersArray = PlayersCount.playersOnGame;
         for (Player p : playersArray) {
-            if (!murderRole.equals(PlayersCount.playersOnGame)) {
+            if (!p.equals(murderRole)) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 600, 1));
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 600, 1));
             }
