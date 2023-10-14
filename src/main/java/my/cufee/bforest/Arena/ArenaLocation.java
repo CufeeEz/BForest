@@ -20,7 +20,7 @@ public class ArenaLocation {
     }
     public static Location getLocSpawnMurder() {
         World world = Bukkit.getWorld("world");
-        Location LocSpawnSurvivor = new Location(world, -53.5, 70.0, 61.5);
+        Location LocSpawnSurvivor = new Location(world, -67.5, 69.0, 59.5);
         return LocSpawnSurvivor;
     }
     public static Location getLocPreSpawnMurder() {
@@ -30,7 +30,7 @@ public class ArenaLocation {
     }
     public static Location getLocHubGame() {
         World world = Bukkit.getWorld("world");
-        Location SpawnLoc = new Location(world, -52.5, 113.0, 102.5);
+        Location SpawnLoc = new Location(world, -66.5, 113.0, 87.5);
         return SpawnLoc;
     }
 }

@@ -2,7 +2,6 @@ package my.cufee.bforest.Game;
 
 import my.cufee.bforest.Arena.ArenaLocation;
 
-import my.cufee.bforest.Util.ChatUtil;
 import my.cufee.bforest.Util.PlayersCount;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
